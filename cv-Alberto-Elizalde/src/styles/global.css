@@ -1,0 +1,91 @@
+/* Efecto neon para la foto */
+@keyframes neon {
+
+    0%,
+    100% {
+        box-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+
+    50% {
+        box-shadow: 0 0 20px #ff00ff, 0 0 40px #0ff, 0 0 60px #ff00ff;
+    }
+}
+
+.animate-neon {
+    animation: neon 2s infinite alternate;
+}
+
+/* Efecto glitch en texto */
+.glitch {
+    position: relative;
+    color: #0ff;
+    text-shadow: 2px 2px magenta, -2px -2px cyan;
+}
+
+.glitch::before,
+.glitch::after {
+    content: attr(data-text);
+    /* ✅ usa el texto del atributo, no la clase */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.glitch::before {
+    left: 2px;
+    text-shadow: -2px 0 magenta;
+    animation: glitchTop 1s infinite linear alternate-reverse;
+}
+
+.glitch::after {
+    left: -2px;
+    text-shadow: -2px 0 cyan;
+    animation: glitchBottom 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitchTop {
+    0% {
+        clip-path: inset(0 0 80% 0);
+    }
+
+    50% {
+        clip-path: inset(0 0 40% 0);
+    }
+
+    100% {
+        clip-path: inset(0 0 60% 0);
+    }
+}
+
+@keyframes glitchBottom {
+    0% {
+        clip-path: inset(20% 0 0 0);
+    }
+
+    50% {
+        clip-path: inset(60% 0 0 0);
+    }
+
+    100% {
+        clip-path: inset(40% 0 0 0);
+    }
+}
+
+/* Flotar para la figura de Miku */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.animate-float {
+    animation: float 4s ease-in-out infinite;
+}
